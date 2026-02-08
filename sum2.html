@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduLearn Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2563eb", dark: "#0f172a", lightText: "#94a3b8" },
+            fontFamily: { poppins: ["Poppins", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body { font-family: "Poppins", sans-serif; overflow-x: hidden; }
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: translateY(0);} }
+      @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px);} to { opacity: 1; transform: translateX(0);} }
+      @keyframes slideInRight { from { opacity: 0; transform: translateX(100px);} to { opacity: 1; transform: translateX(0);} }
+      @keyframes scaleIn { from { opacity: 0; transform: scale(0.8);} to { opacity: 1; transform: scale(1);} }
+      @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-20px);} }
+      @keyframes glow { 0%,100% { box-shadow: 0 0 20px rgba(37,99,235,.3);} 50% { box-shadow: 0 0 40px rgba(37,99,235,.6);} }
+      @keyframes morphing { 0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;} 50% { border-radius:30% 60% 70% 40% / 50% 60% 30% 60%;} }
+      .animate-fadeInUp { animation: fadeInUp 1s ease-out; }
+      .animate-slideInLeft { animation: slideInLeft 1s ease-out; }
+      .animate-slideInRight { animation: slideInRight 1s ease-out; }
+      .animate-scaleIn { animation: scaleIn .8s ease-out; }
+      .animate-float { animation: float 3s ease-in-out infinite; }
+      .animate-glow { animation: glow 2s ease-in-out infinite; }
+      .animate-morphing { animation: morphing 8s ease-in-out infinite; }
+      .hover-lift { transition: all .3s cubic-bezier(.25,.46,.45,.94); }
+      .hover-lift:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+      .hover-glow:hover { box-shadow: 0 0 30px rgba(37,99,235,.4); transform: scale(1.05); }
+      .gradient-text { background: linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+      .glass-effect { background: rgba(255,255,255,.1); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,.2); }
+
+      /* Smooth anchor scroll + fixed header offset */
+      html { scroll-behavior: smooth; }
+      section[id] { scroll-margin-top: 110px; } /* accounts for top bar + navbar */
+    </style>
+  </head>
+
+  <body class="bg-white text-slate-800">
+    <div class="fixed top-0 left-0 right-0 z-50 bg-dark text-white text-sm animate-slideInLeft">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-2">
+        <div class="flex items-center gap-6">
+          <span class="flex items-center gap-2 hover:text-primary transition"><i data-lucide="mail" class="w-4 h-4"></i> info@edulearn.com</span>
+          <span class="flex items-center gap-2 hover:text-primary transition"><i data-lucide="phone" class="w-4 h-4"></i> 0734564463</span>
+        </div>
+        <div class="flex gap-4">
+          <i data-lucide="facebook" class="w-4 h-4 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+          <i data-lucide="twitter" class="w-4 h-4 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+          <i data-lucide="linkedin" class="w-4 h-4 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+        </div>
+      </div>
+    </div>
+
+    <nav class="fixed top-[40px] left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-8">
+            <div class="flex items-center gap-2">
+              <i data-lucide="book-open" class="h-8 w-8 text-primary"></i>
+              <span class="text-2xl font-bold text-primary">Edu Learn</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6">
+              <a href="#home" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+              <a href="#about" class="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+              <a href="#courses" class="text-gray-700 hover:text-primary transition-colors font-medium">Courses</a>
+              <a href="#contact" class="text-gray-700 hover:text-primary transition-colors font-medium">Contact</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="signup.html" class="bg-primary text-white px-5 py-2 rounded-md font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 hover-lift">Sign Up</a>
+            <a href="login.html" class="border-2 border-primary text-primary px-5 py-2 rounded-md font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover-lift">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="relative h-[650px] flex items-center overflow-hidden pt-24">
+      <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')"></div>
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 text-white">
+        <p class="uppercase tracking-widest text-sm mb-4 text-blue-200 animate-fadeInUp">
+          <span class="inline-flex items-center gap-3 glass-effect px-5 py-2 rounded-md hover-glow">
+            DIGITAL LEARNING PLATFORM
+          </span>
+        </p>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 animate-slideInLeft gradient-text">
+          Transform Learning <br /> with Interactive Education
+        </h1>
+        <p class="max-w-xl text-lightText mb-8 animate-slideInRight">
+          Experience micro-lessons, interactive quizzes, and track your progress with our comprehensive digital learning platform designed for modern education.
+        </p>
+        <div class="flex gap-4 animate-fadeInUp">
+          <a href="login.html" class="bg-primary px-7 py-3 rounded-md font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 hover-lift animate-glow">
+            Start Learning
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-14 animate-fadeInUp">
+          <div>
+            <p class="text-primary uppercase font-semibold tracking-wider">What We Offer</p>
+            <h2 class="text-4xl font-extrabold mt-3 gradient-text">Comprehensive Learning Solutions</h2>
+          </div>
+
+          <!-- make button jump to Courses -->
+          <a href="#courses" class="bg-primary text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300 hover-lift">
+            View Courses
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="p-10 bg-white shadow-lg rounded-xl hover:shadow-2xl transition-all duration-500 hover-lift group glass-effect border border-gray-100 animate-scaleIn">
+            <div class="w-16 h-16 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 animate-glow">
+              <i data-lucide="book-open" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-all duration-300">Interactive Lessons</h3>
+            <p class="text-gray-600 group-hover:text-gray-700 transition-all duration-300">Engage with micro-lessons containing text, images, and videos designed for effective learning and knowledge retention.</p>
+          </div>
+
+          <div class="p-10 bg-white shadow-lg rounded-xl hover:shadow-2xl transition-all duration-500 hover-lift group glass-effect border border-gray-100 animate-scaleIn" style="animation-delay:.2s;">
+            <div class="w-16 h-16 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 animate-glow">
+              <i data-lucide="award" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-all duration-300">Smart Assessments</h3>
+            <p class="text-gray-600 group-hover:text-gray-700 transition-all duration-300">Take quizzes linked to lessons with intelligent scoring logic and instant feedback to track your understanding.</p>
+          </div>
+
+          <div class="p-10 bg-white shadow-lg rounded-xl hover:shadow-2xl transition-all duration-500 hover-lift group glass-effect border border-gray-100 animate-scaleIn" style="animation-delay:.4s;">
+            <div class="w-16 h-16 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 animate-glow">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-all duration-300">Progress Tracking</h3>
+            <p class="text-gray-600 group-hover:text-gray-700 transition-all duration-300">Monitor your learning journey with comprehensive dashboards showing completion rates and performance analytics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-[#f5f8ff]">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div class="relative animate-slideInLeft">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" class="rounded-lg shadow-xl transition-transform duration-300 hover:scale-105" alt="Students learning" />
+          <div class="absolute -bottom-10 left-40 w-40 h-40 bg-white rounded-lg shadow-xl flex items-center justify-center group hover:bg-primary transition">
+            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white text-xl group-hover:bg-white group-hover:text-primary transition">
+              <i data-lucide="play" class="w-5 h-5"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="animate-slideInRight">
+          <p class="text-primary font-semibold uppercase">About EduLearn</p>
+          <h2 class="text-4xl font-extrabold mt-3 mb-6 leading-tight">We Deliver Interactive Digital Learning Experiences</h2>
+          <p class="text-gray-600 mb-8">Our platform provides micro-lessons, interactive quizzes, and comprehensive progress tracking to enhance learning efficiency and engagement for modern education.</p>
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="flex items-start gap-4 group">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition">
+                <i data-lucide="check-circle" class="w-5 h-5"></i>
+              </div>
+              <div><h4 class="font-bold">Quality Content</h4><p class="text-sm text-gray-600">Expert-crafted lessons and assessments</p></div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div><h4 class="font-bold">24/7 Access</h4><p class="text-sm text-gray-600">Learn anytime, anywhere at your pace</p></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <a href="#courses" class="bg-primary text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-700 transition transform hover:scale-105">
+              Explore Courses
+            </a>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-12 h-12 rounded-full" alt="Founder" />
+              <div><p class="font-bold">Sarah Johnson</p><p class="text-sm text-gray-500">Education Director</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: COURSES (clickable from navbar via #courses) -->
+    <section id="courses" class="py-24 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 animate-fadeInUp">
+          <div>
+            <p class="text-primary uppercase font-semibold tracking-wider">Courses</p>
+            <h2 class="text-4xl font-extrabold mt-3 gradient-text">Explore Popular Courses</h2>
+            <p class="text-gray-600 mt-3 max-w-2xl">
+              Choose a learning track and start with bite-sized lessons, hands-on quizzes, and progress tracking.
+            </p>
+          </div>
+
+          <div class="flex gap-3">
+            <a href="login.html" class="bg-primary text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300 hover-lift">
+              Browse All
+            </a>
+            <a href="#contact" class="border-2 border-primary text-primary px-6 py-3 rounded-md font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover-lift">
+              Ask About a Course
+            </a>
+          </div>
+        </div>
+
+        <div id="courses-grid" class="grid md:grid-cols-3 gap-10"></div>
+
+        <div class="mt-14 grid md:grid-cols-3 gap-6 animate-fadeInUp">
+          <div class="bg-[#f5f8ff] border border-blue-100 rounded-xl p-8 hover-lift">
+            <p class="text-sm uppercase tracking-widest text-primary font-semibold">Included</p>
+            <h4 class="text-xl font-bold mt-2">Lessons + Quizzes</h4>
+            <p class="text-gray-600 mt-2">Every course comes with guided lessons and checkpoints to measure progress.</p>
+          </div>
+          <div class="bg-[#f5f8ff] border border-blue-100 rounded-xl p-8 hover-lift">
+            <p class="text-sm uppercase tracking-widest text-primary font-semibold">Outcome</p>
+            <h4 class="text-xl font-bold mt-2">Track Progress</h4>
+            <p class="text-gray-600 mt-2">Dashboards show completion, pass rate, and next steps to keep you moving.</p>
+          </div>
+          <div class="bg-[#f5f8ff] border border-blue-100 rounded-xl p-8 hover-lift">
+            <p class="text-sm uppercase tracking-widest text-primary font-semibold">Support</p>
+            <h4 class="text-xl font-bold mt-2">Guided Learning</h4>
+            <p class="text-gray-600 mt-2">Structured tracks and clear milestones to avoid confusion and keep momentum.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6 md:px-20">
+        <div class="grid grid-cols-1 gap-0 shadow-2xl rounded-xl overflow-hidden">
+          <div class="bg-primary p-10 md:p-16 text-white">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-8 h-4 bg-white/20 rounded-full relative flex items-center px-1"><div class="w-2 h-2 bg-white rounded-full"></div></div>
+              <span class="text-xs font-bold tracking-widest uppercase">Talk To Us</span>
+            </div>
+            <h2 class="text-4xl font-bold mb-10">How May We Help You Learn!</h2>
+
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex flex-col gap-2"><label class="text-sm font-semibold">Your Name*</label><input type="text" placeholder="John Doe" class="p-4 text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50" /></div>
+              <div class="flex flex-col gap-2"><label class="text-sm font-semibold">Your Email*</label><input type="email" placeholder="info@edulearn.com" class="p-4 text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50" /></div>
+              <div class="flex flex-col gap-2"><label class="text-sm font-semibold">Subject*</label><input type="text" placeholder="Course Inquiry" class="p-4 text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50" /></div>
+              <div class="flex flex-col gap-2"><label class="text-sm font-semibold">Your Phone*</label><input type="text" placeholder="+1-800-EDU-LEARN" class="p-4 text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50" /></div>
+              <div class="flex flex-col gap-2 md:col-span-2"><label class="text-sm font-semibold">Message*</label><textarea rows="4" placeholder="Tell us about your learning goals..." class="p-4 text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50"></textarea></div>
+              <button class="md:col-span-2 bg-dark hover:bg-white hover:text-primary transition-all font-bold py-4 uppercase tracking-widest mt-4 transform hover:scale-105">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-primary text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="relative max-w-7xl mx-auto px-6 text-center animate-scaleIn">
+        <h2 class="text-4xl font-bold mb-6 gradient-text">Ready to Start Your Learning Journey?</h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of learners who are advancing their skills with our interactive digital learning platform.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="login.html" class="bg-white text-primary px-8 py-4 rounded-md font-semibold hover:bg-gray-100 transition-all duration-300 hover-lift">Start Learning</a>
+          <a href="#courses" class="border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-primary transition-all duration-300 hover-lift glass-effect">View Courses</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-gray-300">
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-4 gap-10">
+          <div class="animate-fadeInUp">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-white"></i></div>
+              <h3 class="text-white text-2xl font-bold">EduLearn</h3>
+            </div>
+            <p class="mb-6">Empowering learners worldwide with interactive digital education. Transform your skills with our comprehensive learning platform.</p>
+            <div class="flex gap-4">
+              <i data-lucide="facebook" class="w-5 h-5 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+              <i data-lucide="twitter" class="w-5 h-5 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+              <i data-lucide="linkedin" class="w-5 h-5 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+              <i data-lucide="instagram" class="w-5 h-5 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+            </div>
+          </div>
+
+          <div class="animate-fadeInUp" style="animation-delay:.2s;">
+            <h4 class="text-white font-semibold mb-6">Learning</h4>
+            <ul class="space-y-3">
+              <li class="hover:text-primary cursor-pointer transition"><a href="#courses">Courses</a></li>
+              <li class="hover:text-primary cursor-pointer transition">Lessons</li>
+              <li class="hover:text-primary cursor-pointer transition">Quizzes</li>
+              <li class="hover:text-primary cursor-pointer transition">Progress Tracking</li>
+              <li class="hover:text-primary cursor-pointer transition">Certificates</li>
+            </ul>
+          </div>
+
+          <div class="animate-fadeInUp" style="animation-delay:.4s;">
+            <h4 class="text-white font-semibold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li class="hover:text-primary cursor-pointer transition"><a href="#about">About Us</a></li>
+              <li class="hover:text-primary cursor-pointer transition"><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="animate-fadeInUp" style="animation-delay:.6s;">
+            <h4 class="text-white font-semibold mb-6">Contact Info</h4>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3 hover:text-primary transition"><i data-lucide="map-pin" class="w-4 h-4 text-primary"></i><span>123 Education St, Learning City, LC 12345</span></div>
+              <div class="flex items-center gap-3 hover:text-primary transition"><i data-lucide="phone" class="w-4 h-4 text-primary"></i><span>+1-800-EDU-LEARN</span></div>
+              <div class="flex items-center gap-3 hover:text-primary transition"><i data-lucide="mail" class="w-4 h-4 text-primary"></i><span>info@edulearn.com</span></div>
+            </div>
+            <div class="mt-6">
+              <h5 class="text-white font-semibold mb-3">Newsletter</h5>
+              <div class="flex">
+                <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-md focus:outline-none focus:border-primary transition" />
+                <button class="bg-primary px-4 py-2 rounded-r-md hover:bg-blue-700 transition transform hover:scale-105">?</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-sm">? 2026 EduLearn. All rights reserved.</p>
+          <div class="flex gap-6 text-sm">
+            <span class="hover:text-primary cursor-pointer transition">Privacy Policy</span>
+            <span class="hover:text-primary cursor-pointer transition">Terms of Service</span>
+            <span class="hover:text-primary cursor-pointer transition">Cookie Policy</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons();</script>
+    <script src="data-store.js"></script>
+    <script src="course-data.js"></script>
+    <script src="sum2.js"></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduLearn Quiz</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2563eb", dark: "#0f172a", lightText: "#94a3b8" },
+            fontFamily: { poppins: ["Poppins", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body { font-family: "Poppins", sans-serif; overflow-x: hidden; }
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: translateY(0);} }
+      @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px);} to { opacity: 1; transform: translateX(0);} }
+      @keyframes scaleIn { from { opacity: 0; transform: scale(0.8);} to { opacity: 1; transform: scale(1);} }
+      .animate-fadeInUp { animation: fadeInUp 1s ease-out; }
+      .animate-slideInLeft { animation: slideInLeft 1s ease-out; }
+      .animate-scaleIn { animation: scaleIn .8s ease-out; }
+      .hover-lift { transition: all .3s cubic-bezier(.25,.46,.45,.94); }
+      .hover-lift:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+      .gradient-text { background: linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    </style>
+  </head>
+
+  <body class="bg-[#f5f8ff] text-slate-800">
+    <!-- Top info bar -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-dark text-white text-sm animate-slideInLeft">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-2">
+        <div class="flex items-center gap-6">
+          <span class="flex items-center gap-2 hover:text-primary transition">
+            <i data-lucide="mail" class="w-4 h-4"></i> info@edulearn.com
+          </span>
+          <span class="flex items-center gap-2 hover:text-primary transition">
+            <i data-lucide="phone" class="w-4 h-4"></i> 0734564463
+          </span>
+        </div>
+        <div class="flex gap-4">
+          <i data-lucide="facebook" class="w-4 h-4 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+          <i data-lucide="twitter" class="w-4 h-4 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+          <i data-lucide="linkedin" class="w-4 h-4 hover:text-primary cursor-pointer transition transform hover:scale-110"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main navbar -->
+    <nav class="fixed top-[40px] left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-2">
+            <i data-lucide="book-open" class="h-8 w-8 text-primary"></i>
+            <span class="text-2xl font-bold text-primary">Edu Learn</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="sum2.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+            <a href="lesson.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Lessons</a>
+            <a href="quiz.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Quiz</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Layout: Sidebar + Quiz content -->
+    <section class="pt-32 pb-20">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[260px_1fr] gap-8">
+        <!-- Learner sidebar -->
+        <aside class="bg-white rounded-xl shadow-lg p-6 h-fit animate-slideInLeft">
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-4">Learner</p>
+          <nav class="grid gap-2 text-sm">
+            <a href="dashboard-learner.html" class="px-4 py-3 rounded-md hover:bg-blue-50">Overview</a>
+            <a href="lesson.html" class="px-4 py-3 rounded-md hover:bg-blue-50">My Lessons</a>
+            <a href="quiz.html" class="px-4 py-3 rounded-md bg-primary text-white">My Quizzes</a>
+            <a href="login.html" class="px-4 py-3 rounded-md hover:bg-blue-50">Logout</a>
+          </nav>
+        </aside>
+
+        <!-- Quiz content (kept) -->
+        <div>
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 animate-fadeInUp">
+            <div>
+              <p id="quiz-eyebrow" class="text-primary uppercase font-semibold tracking-wider"></p>
+              <h1 id="quiz-course-title" class="text-4xl md:text-5xl font-extrabold mt-3 gradient-text">Course Quizzes</h1>
+              <p id="quiz-desc" class="text-gray-600 mt-3 max-w-2xl"></p>
+            </div>
+            <div class="flex gap-3">
+              <a href="dashboard-learner.html" class="bg-primary text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300 hover-lift">View Progress</a>
+              <a href="lesson.html" class="border-2 border-primary text-primary px-6 py-3 rounded-md font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover-lift">Go to Lessons</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <p class="text-sm text-gray-500 mb-3">Course Tracks</p>
+            <div id="quiz-tracks" class="grid md:grid-cols-3 gap-4 text-sm"></div>
+          </div>
+
+          <div id="quiz-grid" class="grid md:grid-cols-3 gap-10"></div>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-10 animate-fadeInUp">
+            <div class="bg-[#f5f8ff] border border-blue-100 rounded-xl p-6">
+              <p class="text-sm uppercase tracking-widest text-primary font-semibold">Progress</p>
+              <h4 id="quiz-progress" class="text-xl font-bold mt-2">0 of 0 Quizzes</h4>
+              <p id="quiz-progress-note" class="text-gray-600 mt-2">Finish lessons to unlock the next assessment.</p>
+            </div>
+            <div class="bg-[#f5f8ff] border border-blue-100 rounded-xl p-6">
+              <p class="text-sm uppercase tracking-widest text-primary font-semibold">Average Score</p>
+              <h4 id="quiz-avg" class="text-xl font-bold mt-2">0%</h4>
+              <p class="text-gray-600 mt-2">Keep a score above 80% to pass.</p>
+            </div>
+            <div class="bg-[#f5f8ff] border border-blue-100 rounded-xl p-6">
+              <p class="text-sm uppercase tracking-widest text-primary font-semibold">Next Step</p>
+              <h4 id="quiz-next" class="text-xl font-bold mt-2">Complete Lessons</h4>
+              <p class="text-gray-600 mt-2">Return to lessons to unlock more quizzes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons();</script>
+    <script src="data-store.js"></script>
+    <script src="course-data.js"></script>
+    <script src="quiz.js"></script>
+  </body>
+</html>
